@@ -1,0 +1,19 @@
+{
+  "name": "<%= name %>",
+  "version": "<%= version %>",
+  "description": "<%= description %>",
+  "homepage": "<%= homepage %>",
+  "author": "<%= author %>",
+  "license": "<%= license %>",
+  "scripts": {
+    "browser-spec": "npm run browser-spec-build && npm run browser-spec-run",
+    "browser-spec-build": "cross-env NODE_ENV=browser-spec webpack",
+    "browser-spec-run": "cross-env NODE_ENV=browser-spec webpack-dev-server --port <%- specRunnerPort %>",
+    "optimize": "webpack -p --progress",
+    "prepublish": "webpack --progress",
+    "start": "webpack-dev-server --inline --hot --port <%- port %>",
+    "yo": "yo"
+  },
+  "dependencies": <%- dependenciesString %>,
+  "devDependencies": <%- devDependenciesString %>
+}

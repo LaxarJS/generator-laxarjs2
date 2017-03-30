@@ -1,0 +1,16 @@
+{
+  "name": "<%= name %>",
+  "version": "0.1.0-pre",
+  "description": "<%= description %>",
+  "homepage": "<%= homepage %>",
+  "main": "<%- controllerName %>",
+  "license": "<%= license %>",
+  "scripts": {
+    "prepublish": "npm run dist",
+    "dist": "webpack -p",
+    "start": "webpack && webpack-dev-server --inline"
+  },
+  "dependencies": <%- dependenciesString %>,
+  "peerDependencies": <%- peerDependenciesString %>,
+  "devDependencies": <%- devDependenciesString %>
+}

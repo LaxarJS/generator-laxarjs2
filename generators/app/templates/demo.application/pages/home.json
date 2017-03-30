@@ -1,0 +1,20 @@
+{
+   "layout": "one-column",
+
+   "areas": {
+      "activities": [
+      ],
+
+      "header": [
+      ],
+
+      "content": [
+         {
+            "widget": "example/plain-hello-world-widget"
+         }
+      ],
+
+      "footer": [
+      ]
+   }
+}

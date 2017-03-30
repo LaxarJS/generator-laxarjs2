@@ -1,0 +1,10 @@
+*~
+*.orig
+*.backup.json
+.idea
+.sass-cache
+/var
+/node_modules
+/npm-debug.log
+/spec-output
+/test-results.xml
