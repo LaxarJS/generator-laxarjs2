@@ -8,11 +8,7 @@
       "header": [
       ],
 
-      "content": [
-         {
-            "widget": "example/plain-hello-world-widget"
-         }
-      ],
+      "content": <%- contentAreaWidgets %>,
 
       "footer": [
       ]

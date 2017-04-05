@@ -97,8 +97,8 @@ module.exports = class extends Generator {
             this.technology =
                technologies.find( _ => _.integrationTechnology === this.vars.integrationTechnology );
 
-            if( typeof this.technology.addAdditionalVars === 'function' ) {
-               this.technology.addAdditionalVars( this.vars );
+            if( typeof this.technology.addAdditionalWidgetVars === 'function' ) {
+               this.technology.addAdditionalWidgetVars( this.vars );
             }
             const ext = sourceFileExtensions( this.technology )[ 0 ];
             this.vars.controllerName = `${this.vars.name}${ext}`;

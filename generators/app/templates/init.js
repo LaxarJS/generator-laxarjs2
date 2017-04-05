@@ -1,6 +1,7 @@
 <%- banner %>
 var laxar = require( 'laxar' );
 var artifacts = require( 'laxar-loader/artifacts?flow=main&theme=default' );
+<%- adapterIncludes %>
 
 var config = {
    name: '<%= name %>',
@@ -24,6 +25,6 @@ var config = {
    }
 };
 
-laxar.create( [], artifacts, config )
+laxar.create( <%- adapterModules %>, artifacts, config )
    .flow( 'main', document.querySelector( '[data-ax-page]' ) )
    .bootstrap();

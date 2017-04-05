@@ -39,15 +39,20 @@ module.exports = class extends Generator {
          license: this.config.get( 'license' ) || 'none',
          homepage: this.config.get( 'homepage' ),
          author: this.config.get( 'author' ),
+         banner: getBanner( this ),
          port: '8000',
          specRunnerPort: '8100',
          technologies: [],
          version: '0.1.0-pre',
-         widgets: true,
+         exampleWidgets: true,
          cssClassName: '',
-         banner: getBanner( this ),
+         contentAreaWidgets: '[]',
+         adapterIncludes: '',
+         adapterModules: '[]',
          sourcefileExtensionExpression: '(jsx?)',
-         sourcefileExtensionList: '[ \'.js\', \'.jsx\' ]'
+         webpackResolveExtensionsString: '[ \'.js\', \'.jsx\' ]',
+         webpackResolveAliases: '',
+         webpackModuleRules: ''
       };
    }
 
@@ -77,9 +82,9 @@ https://github.com/LaxarJS/laxar/blob/master/docs/concepts.md#laxarjs-concepts`
          },
          {
             type: 'confirm',
-            name: 'widgets',
+            name: 'exampleWidgets',
             message: 'Should a set of example widgets be generated?',
-            default: this.vars.widgets
+            default: this.vars.exampleWidgets
          },
          {
             type: 'checkbox',
@@ -96,19 +101,55 @@ https://github.com/LaxarJS/laxar/blob/master/docs/concepts.md#laxarjs-concepts`
          .then( answers => {
             Object.assign( this.vars, answers );
 
-            const selectedAdapters =
-               technologies.filter( _ => this.vars.technologies.includes( _.integrationTechnology ) );
+            this.selectedAdapters = technologies.filter( _ =>
+               _.isBuiltIn || this.vars.technologies.includes( _.integrationTechnology )
+            );
 
+            const adapterIncludes = [];
+            const adapterModules = [];
+            let webpackResolveAliases = '';
+            let webpackModuleRules = '';
+            const webpackResolveExtensions = [];
             const allDependencies = {
                dependencies: Object.assign( {}, dependencies ),
                devDependencies: Object.assign( {}, devDependencies )
             };
-            selectedAdapters.forEach( _ => {
-               Object.assign( allDependencies.dependencies, _.dependencies );
+            this.selectedAdapters.forEach( _ => {
+               Object.assign( allDependencies.dependencies, _.peerDependencies );
                Object.assign( allDependencies.devDependencies, _.devDependencies );
+
+               if( !_.isBuiltIn ) {
+                  const adapterModule = `${_.integrationTechnology}Adapter`;
+                  const requireModule = `laxar-${_.integrationTechnology}-adapter`;
+                  adapterIncludes.push( `var ${adapterModule} = require( '${requireModule}' );`);
+                  adapterModules.push( adapterModule );
+               }
+
+               if( _.webpackModuleRules && _.webpackModuleRules.length ) {
+                  webpackModuleRules = _.webpackModuleRules.reduce( ( rules, rule ) => {
+                     return `${rules},\n            ${rule}`;
+                  }, webpackModuleRules );
+               }
+               if( _.webpackResolveAliases ) {
+                  webpackResolveAliases = Object.keys( _.webpackResolveAliases )
+                     .reduce( ( aliases, key ) => {
+                        return `${aliases},\n            '${key}': '${_.webpackResolveAliases[ key ]}'`;
+                     }, webpackResolveAliases );
+                  Object.assign( webpackResolveAliases, _.webpackResolveAliases );
+               }
+               _.sourceFileExtensions.map( ext => `'${ext}'` ).forEach( ext => {
+                  if( !webpackResolveExtensions.includes( ext ) ) {
+                     webpackResolveExtensions.push( ext );
+                  }
+               } );
             } );
             this.vars.dependenciesString = dependenciesForPackageJson( allDependencies.dependencies );
             this.vars.devDependenciesString = dependenciesForPackageJson( allDependencies.devDependencies );
+            this.vars.adapterIncludes = adapterIncludes.join( '\n' );
+            this.vars.adapterModules = `[ ${adapterModules.join( ', ' )} ]`;
+            this.vars.webpackResolveAliases = webpackResolveAliases;
+            this.vars.webpackModuleRules = webpackModuleRules;
+            this.vars.webpackResolveExtensionsString = `[ ${webpackResolveExtensions.join( ', ' )} ]`;
 
             this.vars.cssClassName = this.vars.name.replace( /[_\s]+/, '-' );
             this.vars.banner = createBanner( this );
@@ -139,8 +180,23 @@ https://github.com/LaxarJS/laxar/blob/master/docs/concepts.md#laxarjs-concepts`
       ] );
       filesToCopy[ '_.gitignore' ] = '.gitignore';
 
-      if( this.vars.widgets ) {
-         filesToCopy[ 'demo.application' ] = 'application';
+      if( this.vars.exampleWidgets ) {
+         filesToCopy[ 'demo.application/flows' ] = 'application/flows';
+         filesToCopy[ 'demo.application/layouts' ] = 'application/layouts';
+         filesToCopy[ 'demo.application/pages' ] = 'application/pages';
+         this.selectedAdapters
+            .map( _ => [
+               `demo.application/widgets/example/${_.integrationTechnology}-hello-world-widget`,
+               `application/widgets/example/${_.integrationTechnology}-hello-world-widget`
+            ] )
+            .forEach( ([ source, dest ]) => {
+               filesToCopy[ source ] = dest;
+            } );
+         this.vars.contentAreaWidgets = JSON.stringify( this.selectedAdapters
+            .map( _ => ({
+               widget: `example/${_.integrationTechnology}-hello-world-widget`
+            }) ), null, 3 )
+            .split( '\n' ).join( '\n      ' );
       }
       else {
          filesToCopy[ 'bare.application' ] = 'application';

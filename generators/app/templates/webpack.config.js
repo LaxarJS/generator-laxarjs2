@@ -26,16 +26,16 @@ module.exports = ( env = {} ) => {
 
       resolve: {
          modules: [ path.resolve( __dirname, 'node_modules' ) ],
-         extensions: <%- sourcefileExtensionList %>,
+         extensions: <%- webpackResolveExtensionsString %>,
          alias: {
-            'default.theme': 'laxar-uikit/themes/default.theme'
+            'default.theme': 'laxar-uikit/themes/default.theme'<%- webpackResolveAliases %>
          }
       },
 
       module: {
          rules: [
             {
-               test: /.spec.<%- sourcefileExtensionExpression %>$/,
+               test: /.spec.js$/,
                exclude: /node_modules/,
                loader: 'laxar-mocks/spec-loader'
             },
@@ -57,7 +57,7 @@ module.exports = ( env = {} ) => {
                loader: env.production ?
                   ExtractTextPlugin.extract( { fallback: 'style-loader', use: 'css-loader' } ) :
                   'style-loader!css-loader'
-            }
+            }<%- webpackModuleRules %>
          ]
       }
    };

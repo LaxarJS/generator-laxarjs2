@@ -30,7 +30,6 @@ module.exports = class extends Generator {
    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
    prompting() {
-      console.log( this.options );
       this.composeWith( require.resolve( '../widget' ), this.options );
    }
 
