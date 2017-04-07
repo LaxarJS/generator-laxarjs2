@@ -29,7 +29,7 @@ module.exports = class extends Generator {
 
    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-   prompting() {
+   initializing() {
       this.composeWith( require.resolve( '../widget' ), this.options );
    }
 

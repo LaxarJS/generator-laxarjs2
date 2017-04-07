@@ -81,19 +81,19 @@ https://github.com/LaxarJS/laxar/blob/master/docs/concepts.md#laxarjs-concepts`
             validate: _ => !isNaN( parseInt( _, 10 ) ) || 'Please enter a valid port number.'
          },
          {
-            type: 'confirm',
-            name: 'exampleWidgets',
-            message: 'Should a set of example widgets be generated?',
-            default: this.vars.exampleWidgets
-         },
-         {
             type: 'checkbox',
             name: 'technologies',
-            message: 'Select widget implementation technologies to include:\n',
+            message: 'Select integration technologies to include:\n',
             default: this.vars.technologies,
             choices: technologies
                .filter( _ => !_.isBuiltIn )
                .map( _ => ({ name: _.name, value: _.integrationTechnology }) )
+         },
+         {
+            type: 'confirm',
+            name: 'exampleWidgets',
+            message: 'Should a set of example widgets be generated?',
+            default: this.vars.exampleWidgets
          }
       ];
 

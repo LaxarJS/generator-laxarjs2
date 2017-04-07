@@ -57,7 +57,7 @@ module.exports = class extends Generator {
          license: this.config.get( 'license' ),
          homepage: this.config.get( 'homepage' ),
          author: this.config.get( 'author' ),
-         integrationTechnology: this.config.get( 'laxarIntegrationTechnology' ) || 'plain',
+         integrationTechnology: ( this.isWidget && this.config.get( 'integrationTechnology' ) ) || 'plain',
          integrationType: this.options.activity ? 'activity' : 'widget',
          cssClassName: '',
          banner: getBanner( this ),
@@ -70,12 +70,15 @@ module.exports = class extends Generator {
    prompting() {
       commonPrompts.greetings( this, this.vars.integrationType );
 
+      const activityNote = this.isWidget ? '' :
+         ' (Note: when creating an activity using "plain" is encouraged)';
+
       const prompts = [
          ...commonPrompts.prompts( this.vars.integrationType, this.vars ),
          {
             type: 'list',
             name: 'integrationTechnology',
-            message: 'Integration technology:',
+            message: `Integration technology${activityNote}:`,
             choices: technologies.map( _ => ({ name: _.name, value: _.integrationTechnology }) ),
             default: this.vars.integrationTechnology
          },
