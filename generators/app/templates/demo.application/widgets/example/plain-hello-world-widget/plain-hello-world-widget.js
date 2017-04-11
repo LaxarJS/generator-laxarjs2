@@ -1,13 +1,11 @@
 <%- banner %>
-var laxar = require( 'laxar' );
-
-exports.injections = [ 'axWithDom' ];
-exports.create = function( axWithDom ) {
+export const injections = [ 'axWithDom' ];
+export function create( axWithDom ) {
    return {
-      onDomAvailable: function() {
-         axWithDom( function( element ) {
+      onDomAvailable() {
+         axWithDom( element => {
             element.querySelector( 'h1' ).innerText = 'Hello World!';
          } );
       }
-   }
+   };
 }

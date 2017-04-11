@@ -2,10 +2,8 @@
 import { Component, NgModule } from '@angular/core';
 import { AxAngularModule } from 'laxar-angular2-adapter';
 
-@Component( {
-   templateUrl: 'ax-widget:template:<%= name %>'
-} )
-export class <%= angularWidgetName %> {
+@Component( { template: '' } )
+export class <%= angular2ComponentName %> {
 
    constructor() {
 
@@ -17,6 +15,6 @@ export class <%= angularWidgetName %> {
 
 @NgModule( {
    imports: [ AxAngularModule ],
-   declarations: [ <%= angularWidgetName %> ]
+   declarations: [ <%= angular2ComponentName %> ]
 } )
-export class <%= angularModuleName %> {}
+export class <%= angular2ModuleName %> {}

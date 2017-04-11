@@ -1,5 +1,5 @@
 <%- banner %>
-var ng = require( 'angular' );
+import { module } from 'angular';
 
 Controller.$inject = [ '$scope' ];
 function Controller( $scope ) {
@@ -8,5 +8,5 @@ function Controller( $scope ) {
 
 }
 
-exports.name = ng.module( '<%= angularModuleName %>', [] )
+export const name = module( '<%= angularModuleName %>', [] )
    .controller( '<%= angularControllerName %>', Controller ).name;

@@ -1,12 +1,12 @@
 <%- banner %>
-exports.injections = [ 'axWithDom' ];
-exports.create = function( withDom ) {
+export const injections = [ 'axWithDom' ];
+export function create( withDom ) {
 
    // TODO: add your implementation here
 
    return {
-      onDomAvailable: function() {
+      onDomAvailable() {
 
       }
    };
-};
+}

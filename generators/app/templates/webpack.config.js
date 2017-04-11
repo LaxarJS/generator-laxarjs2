@@ -35,6 +35,11 @@ module.exports = ( env = {} ) => {
       module: {
          rules: [
             {
+               test: /.js$/,
+               exclude: /node_modules/,
+               loader: 'babel-loader'
+            },
+            {
                test: /.spec.js$/,
                exclude: /node_modules/,
                loader: 'laxar-mocks/spec-loader'

@@ -1,10 +1,10 @@
 <%- banner %>
-var ng = require( 'angular' );
+import { module } from 'angular';
 
-var directiveName = '<%= angularDirectiveName %>';
-var directive = [ function() {
+const directiveName = '<%= angularDirectiveName %>';
+const directive = [ () => {
    return {
-      link: function( scope, element, attrs ) {
+      link( scope, element, attrs ) {
 
          // TODO: add your implementation here
 
@@ -14,5 +14,5 @@ var directive = [ function() {
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-exports.name = ng.module( directiveName, [] )
+export const name = module( directiveName, [] )
    .directive( directiveName, directive ).name;

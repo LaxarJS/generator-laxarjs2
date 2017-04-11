@@ -1,5 +1,5 @@
 <%- banner %>
-exports.create = function() {
+export function create() {
 
    // TODO: add your implementation here
 

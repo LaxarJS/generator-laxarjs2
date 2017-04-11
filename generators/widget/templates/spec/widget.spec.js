@@ -1,11 +1,11 @@
 <%- banner %>
-var axMocks = require( 'laxar-mocks' );
+import * as axMocks from 'laxar-mocks';
 
-describe( 'The <%= name %>', function() {
+describe( 'The <%= name %>', () => {
 
    beforeEach( axMocks.setupForWidget() );
 
-   beforeEach( function() {
+   beforeEach( () => {
       axMocks.widget.configure( {} );
    } );
 
@@ -15,7 +15,7 @@ describe( 'The <%= name %>', function() {
 
    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-   it( 'still needs some tests', function() {
+   it( 'still needs some tests', () => {
       // ... first test here
    } );
 

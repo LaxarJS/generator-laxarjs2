@@ -1,9 +1,9 @@
 <%- banner %>
-var React = require( 'react' );
+import React from 'react';
 
-exports.injections = [];
-exports.create = function() {
+export const injections = [];
+export function create() {
 
    // TODO: add your implementation here
-   
-};
+
+}

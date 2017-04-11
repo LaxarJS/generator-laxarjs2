@@ -1,9 +1,9 @@
 <%- banner %>
-var laxar = require( 'laxar' );
-var artifacts = require( 'laxar-loader/artifacts?flow=main&theme=default' );
+import { create } from 'laxar';
+import artifacts from 'laxar-loader/artifacts?flow=main&theme=default';
 <%- adapterIncludes %>
 
-var config = {
+const config = {
    name: '<%= name %>',
    router: {
       query: {
@@ -25,6 +25,6 @@ var config = {
    }
 };
 
-laxar.create( <%- adapterModules %>, artifacts, config )
+create( <%- adapterModules %>, artifacts, config )
    .flow( 'main', document.querySelector( '[data-ax-page]' ) )
    .bootstrap();

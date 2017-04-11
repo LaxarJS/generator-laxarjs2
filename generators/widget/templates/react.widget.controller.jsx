@@ -1,14 +1,14 @@
 <%- banner %>
-var React = require( 'react' );
+import React from 'react';
 
-exports.injections = [ 'axReactRender' ];
-exports.create = function( reactRender ) {
+export const injections = [ 'axReactRender' ];
+export function create( reactRender ) {
 
    // TODO: add your implementation here
 
    return {
-      onDomAvailable: function() {
+      onDomAvailable() {
 
       }
    };
-};
+}

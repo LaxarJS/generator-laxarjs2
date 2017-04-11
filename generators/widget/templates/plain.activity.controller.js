@@ -1,7 +1,7 @@
 <%- banner %>
-exports.injections = [];
-exports.create = function() {
+export const injections = [];
+export function create() {
 
    // TODO: add your implementation here
-   
-};
+
+}

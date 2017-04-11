@@ -178,6 +178,10 @@ module.exports = class extends Generator {
          [ `${integrationTechnology}.${integrationType}.controller${ext}` ]: controllerName
       };
 
+      if( typeof this.technology.additionalWidgetFilesToCopy === 'function' ) {
+         Object.assign( files, this.technology.additionalWidgetFilesToCopy( this.vars ) );
+      }
+
       if( infrastructure ) {
          const sourceFile =
             this.fs.exists( this.templatePath( `${integrationTechnology}.webpack.config.js` ) ) ?

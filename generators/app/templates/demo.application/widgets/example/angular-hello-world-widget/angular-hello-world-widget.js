@@ -1,10 +1,10 @@
 <%- banner %>
-var ng = require( 'angular' );
+import { module } from 'angular';
 
 Controller.$inject = [ '$scope' ];
 function Controller( $scope ) {
    $scope.message = 'Hello World!';
 }
 
-exports.name = ng.module( 'angularHelloWorldWidget', [] )
+export const name = module( 'angularHelloWorldWidget', [] )
    .controller( 'AngularHelloWorldWidgetController', Controller ).name;

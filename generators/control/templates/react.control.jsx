@@ -1,10 +1,8 @@
 <%- banner %>
 import React from 'react';
 
-const <%- reactClassName %> = React.createClass({
-render() {
+export class <%- reactClassName %> extends React.Component {
+   render() {
       return <div className='<%- cssClassName %>'></div>;
    }
-} );
-
-export default <%- reactClassName %>;
+}

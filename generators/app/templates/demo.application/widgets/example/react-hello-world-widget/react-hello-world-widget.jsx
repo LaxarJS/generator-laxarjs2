@@ -1,21 +1,23 @@
 <%- banner %>
-var React = require( 'react' );
+import React from 'react';
 
-exports.injections = [ 'axReactRender' ];
-exports.create = function( reactRender ) {
+export const injections = [ 'axReactRender' ];
+export function create( reactRender ) {
 
-   var message  = 'Hello World!';
+   const message  = 'Hello World!';
 
    return {
-      onDomAvailable: function() {
-         reactRender( <div className="panel panel-primary">
-            <div className="panel-heading">
-               <h3 className="panel-title">The <em>react-hello-world-widget</em> says ...</h3>
+      onDomAvailable() {
+         reactRender(
+            <div className="panel panel-primary">
+               <div className="panel-heading">
+                  <h3 className="panel-title">The <em>react-hello-world-widget</em> says ...</h3>
+               </div>
+               <div className="panel-body">
+                  <h1>{message}</h1>
+               </div>
             </div>
-            <div className="panel-body">
-               <h1>{message}</h1>
-            </div>
-         </div> );
+         );
       }
    };
-};
+}
