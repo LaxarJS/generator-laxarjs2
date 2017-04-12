@@ -3,7 +3,8 @@
 *.backup.json
 .idea
 .sass-cache
-/var
+/build
+/dist
 /node_modules
 /npm-debug.log
 /spec-output

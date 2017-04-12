@@ -13,9 +13,6 @@ const config = {
          useHash: true
       }
    },
-   flow: {
-      name: 'main'
-   },
    logging: {
       threshold: 'TRACE'
    },

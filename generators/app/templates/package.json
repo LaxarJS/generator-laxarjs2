@@ -11,7 +11,7 @@
     "browser-spec-run": "cross-env NODE_ENV=browser-spec webpack-dev-server --port <%- specRunnerPort %>",
     "optimize": "webpack -p --progress --env.production",
     "prepublish": "webpack --progress",
-    "start": "webpack-dev-server --inline --hot --port <%- port %>",
+    "start": "webpack-dev-server --inline --hot<%- portArgumentString %>",
     "yo": "yo"
   },
   "dependencies": <%- dependenciesString %>,

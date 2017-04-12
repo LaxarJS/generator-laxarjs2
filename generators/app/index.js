@@ -3,7 +3,7 @@
  * Released under the MIT license.
  * http://laxarjs.org/license
  */
-const { bold } = require('chalk');
+const { bold } = require( 'chalk' );
 const path = require( 'path' );
 const { sync: mkdir } = require( 'mkdirp' );
 const Generator = require( 'yeoman-generator' );
@@ -16,6 +16,8 @@ const {
 } = require( '../../lib/utils' );
 const technologies = require( '../../lib/technologies' );
 const commonPrompts = require( '../../lib/common-prompts' );
+
+const defaultPort = 8000;
 
 module.exports = class extends Generator {
 
@@ -36,20 +38,22 @@ module.exports = class extends Generator {
       this.vars = {
          name: pathBasename,
          description: '',
-         license: this.config.get( 'license' ) || 'none',
-         homepage: this.config.get( 'homepage' ),
          author: this.config.get( 'author' ),
          banner: getBanner( this ),
-         port: '8000',
-         specRunnerPort: '8100',
-         technologies: [],
+         homepage: this.config.get( 'homepage' ),
+         license: this.config.get( 'license' ) || 'none',
          version: '0.1.0-pre',
-         exampleWidgets: true,
-         cssClassName: '',
-         contentAreaWidgets: '[]',
+
          adapterIncludes: '',
          adapterModules: '[]',
-         sourcefileExtensionExpression: '(jsx?)',
+         babelPluginsString: '[]',
+         contentAreaWidgets: '[]',
+         cssClassName: '',
+         exampleWidgets: true,
+         port: defaultPort,
+         specRunnerPort: defaultPort + 100,
+         portArgumentString: '',
+         technologies: [],
          webpackResolveExtensionsString: '[ \'.js\', \'.jsx\' ]',
          webpackResolveAliases: '',
          webpackModuleRules: ''
@@ -114,6 +118,7 @@ https://laxarjs.org/docs/laxar-v2-latest/concepts/`
                dependencies: Object.assign( {}, dependencies ),
                devDependencies: Object.assign( {}, devDependencies )
             };
+            const babelPlugins = [];
             this.selectedAdapters.forEach( _ => {
                Object.assign( allDependencies.dependencies, _.peerDependencies );
                Object.assign( allDependencies.devDependencies, _.devDependencies );
@@ -123,6 +128,10 @@ https://laxarjs.org/docs/laxar-v2-latest/concepts/`
                   const requireModule = `laxar-${_.integrationTechnology}-adapter`;
                   adapterIncludes.push( `var ${adapterModule} = require( '${requireModule}' );`);
                   adapterModules.push( adapterModule );
+               }
+
+               if( _.babelPlugins && _.babelPlugins.length ) {
+                  _.babelPlugins.forEach( p => babelPlugins.push( p ) );
                }
 
                if( _.webpackModuleRules && _.webpackModuleRules.length ) {
@@ -143,6 +152,7 @@ https://laxarjs.org/docs/laxar-v2-latest/concepts/`
                   }
                } );
             } );
+            this.vars.babelPluginsString = JSON.stringify( babelPlugins );
             this.vars.dependenciesString = dependenciesForPackageJson( allDependencies.dependencies );
             this.vars.devDependenciesString = dependenciesForPackageJson( allDependencies.devDependencies );
             this.vars.adapterIncludes = adapterIncludes.join( '\n' );
@@ -151,9 +161,11 @@ https://laxarjs.org/docs/laxar-v2-latest/concepts/`
             this.vars.webpackModuleRules = webpackModuleRules;
             this.vars.webpackResolveExtensionsString = `[ ${webpackResolveExtensions.join( ', ' )} ]`;
 
+            this.vars.portArgumentString = ` --port ${this.vars.port}`;
+            this.vars.specRunnerPort = this.vars.port + 100;
+
             this.vars.cssClassName = this.vars.name.replace( /[_\s]+/, '-' );
             this.vars.banner = createBanner( this );
-            this.vars.specRunnerPort = `${parseInt( this.vars.port, 10 ) + 100}`;
          } );
    }
 
@@ -178,6 +190,7 @@ https://laxarjs.org/docs/laxar-v2-latest/concepts/`
          'README.md',
          'webpack.config.js'
       ] );
+      filesToCopy[ '_.babelrc' ] = '.babelrc';
       filesToCopy[ '_.gitignore' ] = '.gitignore';
 
       if( this.vars.exampleWidgets ) {
@@ -218,7 +231,7 @@ https://laxarjs.org/docs/laxar-v2-latest/concepts/`
    end() {
       this.log( `
 Now run ${bold.italic( 'npm install' )} to get tools and dependencies.
-Then you can run ${bold.italic( 'grunt start' )} to start the developing server (port ${this.vars.port}).
+Then you can run ${bold.italic( 'npm start' )} to start the developing server (port ${this.vars.port}).
 Have fun developing your LaxarJS application!
 
 Also, please have a look at the manuals:
