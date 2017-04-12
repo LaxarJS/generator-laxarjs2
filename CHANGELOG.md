@@ -2,7 +2,7 @@
 
 ## Last Changes
 
-- [#1](https://github.com/LaxarJS/laxar/issues/1): use website for documentation links
+- [#1](https://github.com/LaxarJS/generator-laxarjs2/issues/1): use website for documentation links
 
 
 ## v0.2.0
