@@ -11,7 +11,7 @@ module.exports = ( env = {} ) => {
    return {
       devtool: '#source-map',
       entry: {
-         'app': './init.js'
+         'init': './init.js'
       },
 
       output: {
