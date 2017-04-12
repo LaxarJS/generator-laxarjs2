@@ -1,7 +1,7 @@
 {
   "name": "generator-laxarjs2",
   "version": "0.2.0",
-  "description": "Yeoman generator for LaxarJS 2 applications and artifacts ",
+  "description": "Yeoman generator for LaxarJS 2 applications and artifacts",
   "author": "aixigo AG",
   "license": "MIT",
   "homepage": "https://github.com/LaxarJS/generator-laxarjs2#readme",

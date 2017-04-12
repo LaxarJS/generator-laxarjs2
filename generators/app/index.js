@@ -67,7 +67,7 @@ LaxarJS application generator v${this.rootGeneratorVersion()}
 This generator will create the basic file- and directory structure of a LaxarJS application in the current directory.
 
 For more information about a LaxarJS application, please see the docs at
-https://github.com/LaxarJS/laxar/blob/master/docs/concepts.md#laxarjs-concepts`
+https://laxarjs.org/docs/laxar-v2-latest/concepts/`
       );
       /* eslint-enable max-len */
 
@@ -222,7 +222,7 @@ Then you can run ${bold.italic( 'grunt start' )} to start the developing server 
 Have fun developing your LaxarJS application!
 
 Also, please have a look at the manuals:
-https://github.com/LaxarJS/laxar/blob/master/docs/manuals/index.md`
+https://laxarjs.org/docs/laxar-v2-latest/manuals/`
       );
    }
 
