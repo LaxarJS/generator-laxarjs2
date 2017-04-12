@@ -6,9 +6,5 @@ export function create( reactRender ) {
 
    // TODO: add your implementation here
 
-   return {
-      onDomAvailable() {
-
-      }
-   };
+   return () => <div />;
 }

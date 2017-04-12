@@ -2,7 +2,8 @@
 
 ## Last Changes
 
-- [#2](https://github.com/LaxarJS/generator-laxarjs2/issues/2): change output to `init.bundle.js` 
+- [#3](https://github.com/LaxarJS/generator-laxarjs2/issues/3): react: update to laxar-react-adapter@v2.0.0-beta.0
+- [#2](https://github.com/LaxarJS/generator-laxarjs2/issues/2): change output to `init.bundle.js`
 - [#1](https://github.com/LaxarJS/generator-laxarjs2/issues/1): use website for documentation links
 
 
