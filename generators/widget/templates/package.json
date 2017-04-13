@@ -8,7 +8,7 @@
   "scripts": {
     "prepublish": "npm run dist",
     "dist": "webpack -p",
-    "start": "webpack && webpack-dev-server --inline --port 8080"
+    "start": "webpack && webpack-dev-server --inline"
   },
   "dependencies": <%- dependenciesString %>,
   "peerDependencies": <%- peerDependenciesString %>,

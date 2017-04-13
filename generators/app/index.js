@@ -17,8 +17,6 @@ const {
 const technologies = require( '../../lib/technologies' );
 const commonPrompts = require( '../../lib/common-prompts' );
 
-const defaultPort = 8000;
-
 module.exports = class extends Generator {
 
    constructor( args, opts ) {
@@ -50,9 +48,7 @@ module.exports = class extends Generator {
          contentAreaWidgets: '[]',
          cssClassName: '',
          exampleWidgets: true,
-         port: defaultPort,
-         specRunnerPort: defaultPort + 100,
-         portArgumentString: '',
+         specRunnerPort: 8180,
          technologies: [],
          webpackResolveExtensionsString: '[ \'.js\', \'.jsx\' ]',
          webpackResolveAliases: '',
@@ -77,13 +73,6 @@ https://laxarjs.org/docs/laxar-v2-latest/concepts/`
 
       const prompts = [
          ...commonPrompts.prompts( 'application', this.vars ),
-         {
-            type: 'input',
-            name: 'port',
-            message: 'Development server port:',
-            default: this.vars.port,
-            validate: _ => !isNaN( parseInt( _, 10 ) ) || 'Please enter a valid port number.'
-         },
          {
             type: 'checkbox',
             name: 'technologies',
@@ -161,9 +150,6 @@ https://laxarjs.org/docs/laxar-v2-latest/concepts/`
             this.vars.webpackModuleRules = webpackModuleRules;
             this.vars.webpackResolveExtensionsString = `[ ${webpackResolveExtensions.join( ', ' )} ]`;
 
-            this.vars.portArgumentString = ` --port ${this.vars.port}`;
-            this.vars.specRunnerPort = this.vars.port + 100;
-
             this.vars.cssClassName = this.vars.name.replace( /[_\s]+/, '-' );
             this.vars.banner = createBanner( this );
          } );
@@ -231,7 +217,7 @@ https://laxarjs.org/docs/laxar-v2-latest/concepts/`
    end() {
       this.log( `
 Now run ${bold.italic( 'npm install' )} to get tools and dependencies.
-Then you can run ${bold.italic( 'npm start' )} to start the developing server (port ${this.vars.port}).
+Then you can run ${bold.italic( 'npm start' )} to start the developing server.
 Have fun developing your LaxarJS application!
 
 Also, please have a look at the manuals:

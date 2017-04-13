@@ -2,6 +2,8 @@
 
 ## Last Changes
 
+- [#5](https://github.com/LaxarJS/generator-laxarjs2/issues/5): removed port configuration
+
 
 # v2.0.0-alpha.0
 

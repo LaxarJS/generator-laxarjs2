@@ -7,9 +7,9 @@ To install all dependencies run the following on your command line:
 npm install
 ```
 
-Then start the development server:
+Then start the webpack development server:
 ```sh
 npm start
 ```
 
-You can now see your application running at `http://localhost:<%= port %>`.
+You should now be able to see your application running at `http://localhost:8080`.

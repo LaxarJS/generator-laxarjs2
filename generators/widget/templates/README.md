@@ -7,9 +7,9 @@ To install all dependencies run the following on your command line:
 npm install
 ```
 
-Then start the development server, serving your widget tests:
+Then start the webpack development server, serving your widget tests:
 ```sh
 npm start
 ```
 
-You can now see your application running at `http://localhost:8080/dist/spec/<%= name %>.spec.html`.
+You should now be able to see your tests running at `http://localhost:8080/dist/spec/<%= name %>.spec.html`.
