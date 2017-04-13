@@ -2,6 +2,7 @@
 
 ## Last Changes
 
+- [#6](https://github.com/LaxarJS/generator-laxarjs2/issues/6): added favicon.ico
 - [#5](https://github.com/LaxarJS/generator-laxarjs2/issues/5): removed port configuration
 
 
