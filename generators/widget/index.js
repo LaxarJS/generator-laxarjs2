@@ -79,7 +79,10 @@ module.exports = class extends Generator {
             type: 'list',
             name: 'integrationTechnology',
             message: `Integration technology${activityNote}:`,
-            choices: technologies.map( _ => ({ name: _.name, value: _.integrationTechnology }) ),
+            choices: technologies.map( _ => ({
+               name: `${_.name} ("${_.integrationTechnology}")`,
+               value: `${_.integrationTechnology}`
+            }) ),
             default: this.vars.integrationTechnology
          },
          {

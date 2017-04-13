@@ -80,7 +80,10 @@ https://laxarjs.org/docs/laxar-v2-latest/concepts/`
             default: this.vars.technologies,
             choices: technologies
                .filter( _ => !_.isBuiltIn )
-               .map( _ => ({ name: _.name, value: _.integrationTechnology }) )
+               .map( _ => ({
+                  name: `${_.name} ("${_.integrationTechnology}")`,
+                  value: `${_.integrationTechnology}`
+               }) )
          },
          {
             type: 'confirm',

@@ -2,6 +2,7 @@
 
 ## Last Changes
 
+- [#8](https://github.com/LaxarJS/generator-laxarjs2/issues/8): added technology identifier to prompts
 - [#7](https://github.com/LaxarJS/generator-laxarjs2/issues/7): small doc improvements
 - [#5](https://github.com/LaxarJS/generator-laxarjs2/issues/5): removed port configuration
 
