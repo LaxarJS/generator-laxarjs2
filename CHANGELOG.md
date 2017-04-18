@@ -2,6 +2,8 @@
 
 ## Last Changes
 
+- [#9](https://github.com/LaxarJS/generator-laxarjs2/issues/9): added `layout.json` to generated layouts
+
 
 # v2.0.0-alpha.1
 
