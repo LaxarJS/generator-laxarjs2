@@ -9,6 +9,9 @@
     "type": "git",
     "url": "git+https://github.com/LaxarJS/generator-laxarjs2.git"
   },
+  "scripts": {
+     "test": "eslint lib generators/*/*.js"
+  },
   "keywords": [
     "yeoman-generator",
     "laxarjs",
@@ -26,8 +29,8 @@
     "yeoman-generator": "^1.1.1"
   },
   "devDependencies": {
-    "eslint": "^3.0.1",
-    "eslint-config-laxarjs": "^0.4.0"
+    "eslint": "^3.19.0",
+    "eslint-config-laxarjs": "^2.0.0-rc.0"
   },
   "bugs": {
     "url": "https://github.com/LaxarJS/generator-laxarjs2/issues"

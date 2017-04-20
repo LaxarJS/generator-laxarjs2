@@ -5,6 +5,10 @@
 **Note:** This generator produces code that works with LaxarJS version 2.x.
 If you need to create widgets or controls for an application running LaxarJS in version 1.x, you'll have to use [generator-laxarjs](https://laxarjs.org/docs/generator-laxarjs-latest) instead.
 
+<span class="laxar-external-documentation-hint">
+   Take a look at the <a href="https://www.laxarjs.org/docs/generator-laxarjs2">documentation site</a> to browse documentation for all releases of this artifact.
+</span>
+
 
 ## Installation
 
