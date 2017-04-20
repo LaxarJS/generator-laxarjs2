@@ -2,6 +2,9 @@
 
 ## Last Changes
 
+
+# v2.0.0-rc.0
+
 - [#10](https://github.com/LaxarJS/generator-laxarjs2/issues/10): added simplistic tests
 - [#9](https://github.com/LaxarJS/generator-laxarjs2/issues/9): added `layout.json` to generated layouts
 
