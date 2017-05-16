@@ -2,6 +2,9 @@
 
 ## Last Changes
 
+
+# v2.0.0-rc.1
+
 - [#12](https://github.com/LaxarJS/generator-laxarjs2/issues/12): fixed dependencies in package.json
 
 
