@@ -2,6 +2,7 @@
 
 ## Last Changes
 
+- [#16](https://github.com/LaxarJS/generator-laxarjs2/issues/16): Vue.js controller: moved license header comment to script block
 - [#15](https://github.com/LaxarJS/generator-laxarjs2/issues/15): app template: using ES6 modules for adapter imports
 - [#13](https://github.com/LaxarJS/generator-laxarjs2/issues/13): app template: fixed output paths in webpack config
 - [#11](https://github.com/LaxarJS/generator-laxarjs2/issues/11): jasmine: set to newest version for generated apps

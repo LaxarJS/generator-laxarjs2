@@ -1,5 +1,5 @@
-<%- banner %>
 <script>
+<%- banner %>
 export default {
    created() {
 

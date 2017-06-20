@@ -1,9 +1,9 @@
-<%- banner %>
 <template>
    <!-- TODO create a widget template -->
 </template>
 
 <script>
+<%- banner %>
 export default {
    created() {
 
