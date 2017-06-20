@@ -2,6 +2,7 @@
 
 ## Last Changes
 
+- [#13](https://github.com/LaxarJS/generator-laxarjs2/issues/13): app template: fixed output paths in webpack config
 - [#11](https://github.com/LaxarJS/generator-laxarjs2/issues/11): jasmine: set to newest version for generated apps
 
 

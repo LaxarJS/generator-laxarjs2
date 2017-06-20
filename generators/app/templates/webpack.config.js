@@ -6,7 +6,7 @@ const ExtractTextPlugin = require( 'extract-text-webpack-plugin' );
 
 module.exports = ( env = {} ) => {
 
-   const publicPath = env.production ? '/dist/' : '/build/';
+   const outputPath = env.production ? 'dist/' : 'build/';
 
    return {
       devtool: '#source-map',
@@ -15,8 +15,8 @@ module.exports = ( env = {} ) => {
       },
 
       output: {
-         path: path.resolve( __dirname, `./${publicPath}` ),
-         publicPath,
+         path: path.resolve( __dirname, outputPath ),
+         publicPath: outputPath,
          filename: env.production ? '[name].bundle.min.js' : '[name].bundle.js'
       },
 
@@ -49,7 +49,7 @@ module.exports = ( env = {} ) => {
                test: /\.(gif|jpe?g|png|ttf|woff2?|svg|eot|otf)(\?.*)?$/,
                loader: 'file-loader',
                options: {
-                  name: env.production ? 'assets/[name]-[sha1:hash:8].[ext]' : 'assets/[name].[ext]'
+                  name: env.production ? 'assets/[name]-[sha1:hash:8].[ext]' : 'assets/[path]-[name].[ext]'
                }
             },
             {  // ... after optimizing graphics with the image-loader ...
@@ -60,7 +60,11 @@ module.exports = ( env = {} ) => {
                // (extract-loader extracts the CSS string from the JS module returned by the css-loader)
                test: /\.(css|s[ac]ss)$/,
                loader: env.production ?
-                  ExtractTextPlugin.extract( { fallback: 'style-loader', use: 'css-loader' } ) :
+                  ExtractTextPlugin.extract( { 
+                     fallback: 'style-loader',
+                     use: 'css-loader',
+                     publicPath: ''
+                  } ) :
                   'style-loader!css-loader'
             }<%- webpackModuleRules %>
          ]
