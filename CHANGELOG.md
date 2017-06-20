@@ -2,6 +2,8 @@
 
 ## Last Changes
 
+- [#11](https://github.com/LaxarJS/generator-laxarjs2/issues/11): jasmine: set to newest version for generated apps
+
 
 # v2.0.0-rc.1
 
