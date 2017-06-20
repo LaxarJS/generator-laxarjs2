@@ -170,8 +170,12 @@ https://laxarjs.org/docs/laxar-v2-latest/concepts/`
    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
    writing() {
+      const binaryFilesToCopy = verbatimFileObject( [
+         'favicon.ico'
+      ] );
       const filesToCopy = verbatimFileObject( [
          'debug.html',
+         'favicon.ico',
          'index.html',
          'init.js',
          'laxar.config.js',
@@ -211,6 +215,12 @@ https://laxarjs.org/docs/laxar-v2-latest/concepts/`
             this.templatePath( sourceFile ),
             this.destinationPath( filesToCopy[ sourceFile ] ),
             this.vars
+         );
+      } );
+      Object.keys( binaryFilesToCopy ).forEach( sourceFile => {
+         this.fs.copy(
+            this.templatePath( sourceFile ),
+            this.destinationPath( binaryFilesToCopy[ sourceFile ] )
          );
       } );
    }
