@@ -118,7 +118,7 @@ https://laxarjs.org/docs/laxar-v2-latest/concepts/`
                if( !_.isBuiltIn ) {
                   const adapterModule = `${_.integrationTechnology}Adapter`;
                   const requireModule = `laxar-${_.integrationTechnology}-adapter`;
-                  adapterIncludes.push( `var ${adapterModule} = require( '${requireModule}' );`);
+                  adapterIncludes.push( `import * as ${adapterModule} from '${requireModule}';`);
                   adapterModules.push( adapterModule );
                }
 
