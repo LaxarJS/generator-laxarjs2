@@ -2,6 +2,9 @@
 
 ## Last Changes
 
+- [#18](https://github.com/LaxarJS/generator-laxarjs2/issues/18): app template: added SCSS project setup
+
+
 # v2.0.0-rc.2
 
 - [#6](https://github.com/LaxarJS/generator-laxarjs2/issues/6): app template: added a simple favicon

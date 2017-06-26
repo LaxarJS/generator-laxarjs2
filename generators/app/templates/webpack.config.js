@@ -56,16 +56,21 @@ module.exports = ( env = {} ) => {
                test: /\.(gif|jpe?g|png|svg)$/,
                loader: 'img-loader?progressive=true'
             },
-            {  // ... and resolving CSS url(s) with the css loader
+            {  // ... and resolving CSS url()s with the css loader
                // (extract-loader extracts the CSS string from the JS module returned by the css-loader)
                test: /\.(css|s[ac]ss)$/,
                loader: env.production ?
-                  ExtractTextPlugin.extract( { 
+                  ExtractTextPlugin.extract( {
                      fallback: 'style-loader',
                      use: 'css-loader',
                      publicPath: ''
                   } ) :
-                  'style-loader!css-loader'
+                  'style-loader!css-loader?sourceMap!resolve-url-loader?sourceMap'
+            },
+            {
+               test: /[/]default[.]theme[/].*[.]s[ac]ss$/,
+               loader: 'sass-loader',
+               options: require( 'laxar-uikit/themes/default.theme/sass-options' )
             }<%- webpackModuleRules %>
          ]
       }
