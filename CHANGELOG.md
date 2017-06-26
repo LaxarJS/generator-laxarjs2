@@ -3,6 +3,7 @@
 ## Last Changes
 
 
+# v2.0.0-rc.4
 # v2.0.0-rc.3
 
 - [#18](https://github.com/LaxarJS/generator-laxarjs2/issues/18): app template: added SCSS project setup
