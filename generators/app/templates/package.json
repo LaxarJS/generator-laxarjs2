@@ -9,6 +9,7 @@
     "browser-spec": "npm run browser-spec-build && npm run browser-spec-run",
     "browser-spec-build": "cross-env NODE_ENV=browser-spec webpack",
     "browser-spec-run": "cross-env NODE_ENV=browser-spec webpack-dev-server --port <%- specRunnerPort %>",
+    "dist": "npm run optimize",
     "optimize": "webpack -p --progress --env.production",
     "prepublish": "webpack --progress",
     "start": "webpack-dev-server --inline --hot",

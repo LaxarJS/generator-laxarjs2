@@ -65,7 +65,7 @@ module.exports = ( env = {} ) => {
                      use: 'css-loader',
                      publicPath: ''
                   } ) :
-                  'style-loader!css-loader?sourceMap!resolve-url-loader?sourceMap'
+                  'style-loader!css-loader?sourceMap'
             },
             {
                test: /[/]default[.]theme[/].*[.]s[ac]ss$/,

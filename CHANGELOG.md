@@ -2,6 +2,8 @@
 
 ## Last Changes
 
+- [#19](https://github.com/LaxarJS/generator-laxarjs2/issues/19): app template: use (updated) style-loader
+
 
 # v2.0.0-rc.4
 # v2.0.0-rc.3
