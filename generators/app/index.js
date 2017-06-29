@@ -230,7 +230,7 @@ https://laxarjs.org/docs/laxar-v2-latest/concepts/`
    end() {
       this.log( `
 Now run ${bold.italic( 'npm install' )} to get tools and dependencies.
-Then you can run ${bold.italic( 'npm start' )} to start the developing server.
+Then you can run ${bold.italic( 'npm start' )} to start the development server.
 There, enter the application through the ${bold.italic( 'debug.html' )}.
 The ${bold.italic( 'README.md' )} contains more information.
 

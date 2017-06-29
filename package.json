@@ -1,6 +1,6 @@
 {
   "name": "generator-laxarjs2",
-  "version": "2.0.0-rc.4",
+  "version": "2.0.0",
   "description": "Yeoman generator for LaxarJS 2 applications and artifacts",
   "author": "aixigo AG",
   "license": "MIT",
@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "eslint": "^3.19.0",
-    "eslint-config-laxarjs": "^2.0.0-rc.0"
+    "eslint-config-laxarjs": "^2.0.0"
   },
   "bugs": {
     "url": "https://github.com/LaxarJS/generator-laxarjs2/issues"
