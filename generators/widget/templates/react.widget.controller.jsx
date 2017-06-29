@@ -1,10 +1,17 @@
 <%- banner %>
 import React from 'react';
+import { injections } from 'laxar-react-adapter';
 
-export const injections = [ 'axReactRender' ];
-export function create( reactRender ) {
+export default class <%= reactClassName %> extends React.Component {
+   static [ injections ] = [ 'axContext' ];
 
-   // TODO: add your implementation here
+   constructor( props ) {
+      super( props );
+      const [ context ] = props.context;
+      // TODO: add your implementation here
+   }
 
-   return () => <div />;
+   render() {
+      return <div />;
+   }
 }

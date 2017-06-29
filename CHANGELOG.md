@@ -2,6 +2,8 @@
 
 ## Last Changes
 
+- [#20](https://github.com/LaxarJS/generator-laxarjs2/issues/20): React template: use new laxar-react-adapter API
+
 
 ## v2.0.1
 
