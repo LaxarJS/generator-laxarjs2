@@ -16,6 +16,7 @@ const {
 } = require( '../../lib/utils' );
 const technologies = require( '../../lib/technologies' );
 const commonPrompts = require( '../../lib/common-prompts' );
+const { LICENSE_UNLICENSED } = require( '../../lib/constants' );
 
 module.exports = class extends Generator {
 
@@ -39,7 +40,8 @@ module.exports = class extends Generator {
          author: this.config.get( 'author' ),
          banner: getBanner( this ),
          homepage: this.config.get( 'homepage' ),
-         license: this.config.get( 'license' ) || 'none',
+         license: this.config.get( 'license' ) || LICENSE_UNLICENSED,
+         privateModule: '',
          version: '0.1.0-pre',
 
          adapterIncludes: '',
@@ -155,6 +157,7 @@ https://laxarjs.org/docs/laxar-v2-latest/concepts/`
 
             this.vars.cssClassName = this.vars.name.replace( /[_\s]+/, '-' );
             this.vars.banner = createBanner( this );
+            this.vars.privateModule = this.vars.license === LICENSE_UNLICENSED ? '\n  "private": true,' : '';
          } );
    }
 

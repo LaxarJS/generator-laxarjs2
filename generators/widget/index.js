@@ -17,6 +17,7 @@ const {
 const { common, widget } = require( './dependencies.json' );
 const technologies = require( '../../lib/technologies' );
 const commonPrompts = require( '../../lib/common-prompts' );
+const { LICENSE_UNLICENSED } = require( '../../lib/constants' );
 
 module.exports = class extends Generator {
 
@@ -55,6 +56,7 @@ module.exports = class extends Generator {
          name: widgetName,
          description: '',
          license: this.config.get( 'license' ),
+         privateModule: '',
          homepage: this.config.get( 'homepage' ),
          author: this.config.get( 'author' ),
          integrationTechnology: ( this.isWidget && this.config.get( 'integrationTechnology' ) ) || 'plain',
@@ -99,6 +101,7 @@ module.exports = class extends Generator {
 
             this.vars.cssClassName = this.vars.name.replace( /[_\s]+/, '-' );
             this.vars.banner = createBanner( this );
+            this.vars.privateModule = this.vars.license === LICENSE_UNLICENSED ? '\n  "private": true,' : '';
 
             this.technology =
                technologies.find( _ => _.integrationTechnology === this.vars.integrationTechnology );
