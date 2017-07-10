@@ -2,6 +2,9 @@
 
 ## Last Changes
 
+- [#22](https://github.com/LaxarJS/generator-laxarjs2/issues/22): fixed name of builtin areas
+
+
 ## v2.0.2
 
 - [#20](https://github.com/LaxarJS/generator-laxarjs2/issues/20): React template: use new laxar-react-adapter API
