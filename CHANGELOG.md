@@ -2,6 +2,7 @@
 
 ## Last Changes
 
+- [#22](https://github.com/LaxarJS/generator-laxarjs2/issues/22): fixed name of builtin areas
 - [#23](https://github.com/LaxarJS/generator-laxarjs2/issues/23): license: Changed default from none to UNLICENSED
     + NEW FEATURE: see ticket for details
 
