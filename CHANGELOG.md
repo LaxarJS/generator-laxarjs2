@@ -3,6 +3,7 @@
 ## Last Changes
 
 - [#23](https://github.com/LaxarJS/generator-laxarjs2/issues/23): license: Changed default from none to UNLICENSED
+    + NEW FEATURE: see ticket for details
 
 
 ## v2.0.2
