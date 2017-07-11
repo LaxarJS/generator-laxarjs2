@@ -1,6 +1,7 @@
 <%- banner %>
 const path = require( 'path' );
 const ExtractTextPlugin = require( 'extract-text-webpack-plugin' );
+const webpack = require( 'webpack' );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -21,7 +22,8 @@ module.exports = ( env = {} ) => {
       },
 
       plugins: [
-         ...( env.production ? [ new ExtractTextPlugin( { filename: '[name].bundle.css' } ) ] : [] )
+         ...( env.production ? [ new ExtractTextPlugin( { filename: '[name].bundle.css' } ) ] : [] ),
+         new webpack.optimize.ModuleConcatenationPlugin()
       ],
 
       resolve: {

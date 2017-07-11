@@ -2,6 +2,8 @@
 
 ## Last Changes
 
+- [#17](https://github.com/LaxarJS/generator-laxarjs2/issues/17): dependencies: updated several dependencies for webpack 3
+    + NEW FEATURE: see ticket for details
 - [#22](https://github.com/LaxarJS/generator-laxarjs2/issues/22): fixed name of builtin areas
 - [#23](https://github.com/LaxarJS/generator-laxarjs2/issues/23): license: Changed default from none to UNLICENSED
     + NEW FEATURE: see ticket for details
