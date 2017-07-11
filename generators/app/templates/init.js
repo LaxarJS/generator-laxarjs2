@@ -16,10 +16,7 @@ const config = {
    logging: {
       threshold: 'TRACE'
    },
-   theme: 'default',
-   tooling: {
-      enabled: true
-   }
+   theme: 'default'
 };
 
 create( <%- adapterModules %>, artifacts, config )
