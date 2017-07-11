@@ -2,6 +2,7 @@
 
 ## Last Changes
 
+- [#25](https://github.com/LaxarJS/generator-laxarjs2/issues/25): react template: fixed injection spreading
 - [#24](https://github.com/LaxarJS/generator-laxarjs2/issues/24): removed obsolete tooling configuration
 - [#22](https://github.com/LaxarJS/generator-laxarjs2/issues/22): fixed name of builtin areas
 
