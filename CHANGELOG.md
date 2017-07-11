@@ -2,6 +2,7 @@
 
 ## Last Changes
 
+- [#25](https://github.com/LaxarJS/generator-laxarjs2/issues/25): react template: fixed injection spreading
 - [#24](https://github.com/LaxarJS/generator-laxarjs2/issues/24): removed obsolete tooling configuration
 - [#17](https://github.com/LaxarJS/generator-laxarjs2/issues/17): dependencies: updated several dependencies for webpack 3
     + NEW FEATURE: see ticket for details

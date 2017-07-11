@@ -7,7 +7,7 @@ export default class <%= reactClassName %> extends React.Component {
 
    constructor( props ) {
       super( props );
-      const [ context ] = props.context;
+      const [ context ] = props.injections;
       // TODO: add your implementation here
    }
 
