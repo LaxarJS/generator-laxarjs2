@@ -2,6 +2,7 @@
 
 ## Last Changes
 
+- [#24](https://github.com/LaxarJS/generator-laxarjs2/issues/24): removed obsolete tooling configuration
 - [#22](https://github.com/LaxarJS/generator-laxarjs2/issues/22): fixed name of builtin areas
 
 
