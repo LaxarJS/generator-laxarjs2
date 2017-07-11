@@ -1,19 +1,24 @@
 <%- banner %>
 import React from 'react';
 
-export const injections = [ 'axReactRender' ];
-export function create( reactRender ) {
+export default class ReactHelloWorldWidget extends React.Component {
 
-   const message  = 'Hello World!';
+   constructor( props ) {
+      super( props );
+   }
 
-   return () => (
-      <div className="panel panel-primary">
-         <div className="panel-heading">
-            <h3 className="panel-title">The <em>react-hello-world-widget</em> says ...</h3>
+   render() {
+      const message  = 'Hello World!';
+      
+      return (
+         <div className="panel panel-primary">
+            <div className="panel-heading">
+               <h3 className="panel-title">The <em>react-hello-world-widget</em> says ...</h3>
+            </div>
+            <div className="panel-body">
+               <h1>{message}</h1>
+            </div>
          </div>
-         <div className="panel-body">
-            <h1>{message}</h1>
-         </div>
-      </div>
-   );
+      );
+   }
 }
