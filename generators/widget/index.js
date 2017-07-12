@@ -49,7 +49,7 @@ module.exports = class extends Generator {
 
    initializing() {
       this.isWidget = !this.options.activity;
-      this.widgetDirname = determineArtifactDirName( this, path.join( 'application', 'widgets' ) );
+      this.widgetDirname = determineArtifactDirName( this, 'widgets' );
 
       const widgetName = determineArtifactName( this );
       this.vars = {

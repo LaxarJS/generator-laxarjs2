@@ -44,7 +44,7 @@ module.exports = class extends Generator {
 
    initializing() {
       const controlName = determineArtifactName( this );
-      this.controlDirname = determineArtifactDirName( this, path.join( 'application', 'controls' ) );
+      this.controlDirname = determineArtifactDirName( this, 'controls' );
 
       this.vars = {
          name: controlName,
