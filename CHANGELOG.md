@@ -2,6 +2,9 @@
 
 ## Last Changes
 
+
+## v2.2.0
+
 - [#27](https://github.com/LaxarJS/generator-laxarjs2/issues/27): improved default path resolution for widgets and controls
     + NEW FEATURE: see ticket for details
 
