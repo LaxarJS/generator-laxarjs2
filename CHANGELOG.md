@@ -2,6 +2,9 @@
 
 ## Last Changes
 
+
+## v2.2.2
+
 - [#29](https://github.com/LaxarJS/generator-laxarjs2/issues/29): project: added missing dependencies
 
 
