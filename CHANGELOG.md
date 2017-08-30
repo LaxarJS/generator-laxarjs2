@@ -2,6 +2,8 @@
 
 ## Last Changes
 
+- [#30](https://github.com/LaxarJS/generator-laxarjs2/issues/30): app generator: fixed browser-spec npm script
+
 
 ## v2.2.2
 
