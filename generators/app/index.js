@@ -46,7 +46,7 @@ module.exports = class extends Generator {
 
          adapterIncludes: '',
          adapterModules: '[]',
-         babelPluginsString: '[]',
+         babelPluginsString: '[ "transform-object-rest-spread" ]',
          contentAreaWidgets: '[]',
          cssClassName: '',
          exampleWidgets: true,
@@ -112,7 +112,7 @@ https://laxarjs.org/docs/laxar-v2-latest/concepts/`
                dependencies: Object.assign( {}, dependencies ),
                devDependencies: Object.assign( {}, devDependencies )
             };
-            const babelPlugins = [];
+            const babelPlugins = JSON.parse( this.vars.babelPluginsString );
             this.selectedAdapters.forEach( _ => {
                Object.assign( allDependencies.dependencies, _.peerDependencies );
                Object.assign( allDependencies.devDependencies, _.devDependencies );
@@ -146,7 +146,7 @@ https://laxarjs.org/docs/laxar-v2-latest/concepts/`
                   }
                } );
             } );
-            this.vars.babelPluginsString = JSON.stringify( babelPlugins );
+            this.vars.babelPluginsString = jsonList( babelPlugins );
             this.vars.dependenciesString = dependenciesForPackageJson( allDependencies.dependencies );
             this.vars.devDependenciesString = dependenciesForPackageJson( allDependencies.devDependencies );
             this.vars.adapterIncludes = adapterIncludes.join( '\n' );
@@ -201,11 +201,9 @@ https://laxarjs.org/docs/laxar-v2-latest/concepts/`
             .forEach( ([ source, dest ]) => {
                filesToCopy[ source ] = dest;
             } );
-         this.vars.contentAreaWidgets = JSON.stringify( this.selectedAdapters
-            .map( _ => ({
-               widget: `example/${_.integrationTechnology}-hello-world-widget`
-            }) ), null, 3 )
-            .split( '\n' ).join( '\n      ' );
+         this.vars.contentAreaWidgets = jsonList( this.selectedAdapters.map(
+            _ => ({ widget: `example/${_.integrationTechnology}-hello-world-widget` })
+         ), 2 );
       }
       else {
          filesToCopy[ 'bare.application' ] = 'application';
@@ -245,3 +243,12 @@ https://laxarjs.org/docs/laxar-v2-latest/manuals/`
    }
 
 };
+
+function jsonList( entries, parentIndent = 1 ) {
+   const spacePerIndent = 3;
+   const nestedIndentation = new Array( (spacePerIndent * parentIndent) + 1 ).join( ' ' );
+
+   return JSON.stringify( entries, null, spacePerIndent )
+      .split( '\n' )
+      .join( `\n${nestedIndentation}` );
+}

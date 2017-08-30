@@ -2,6 +2,8 @@
 
 ## Last Changes
 
+- [#27](https://github.com/LaxarJS/generator-laxarjs2/issues/27): app generator: added missing babel plugin configuration for object-rest-spread transform
+
 
 ## v2.2.0
 

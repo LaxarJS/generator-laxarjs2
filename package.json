@@ -10,7 +10,7 @@
     "url": "git+https://github.com/LaxarJS/generator-laxarjs2.git"
   },
   "scripts": {
-     "test": "eslint lib generators/*/*.js"
+    "test": "eslint lib generators/*/*.js"
   },
   "keywords": [
     "yeoman-generator",
