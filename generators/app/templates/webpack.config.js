@@ -1,7 +1,8 @@
 <%- banner %>
 const path = require( 'path' );
-const ExtractTextPlugin = require( 'extract-text-webpack-plugin' );
 const webpack = require( 'webpack' );
+const ExtractTextPlugin = require( 'extract-text-webpack-plugin' );
+const WebpackJasmineHtmlRunnerPlugin = require( 'webpack-jasmine-html-runner-plugin' );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -9,7 +10,9 @@ module.exports = ( env = {} ) => {
 
    const outputPath = env.production ? 'dist/' : 'build/';
 
-   return {
+   const widgetsRoot = require( './laxar.config.js' ).paths.widgets;
+
+   return Object.assign( {
       devtool: '#source-map',
       entry: {
          'init': './init.js'
@@ -23,6 +26,7 @@ module.exports = ( env = {} ) => {
 
       plugins: [
          ...( env.production ? [ new ExtractTextPlugin( { filename: '[name].bundle.css' } ) ] : [] ),
+         ...( env.browserSpec ? [ new WebpackJasmineHtmlRunnerPlugin() ] : [] ),
          new webpack.optimize.ModuleConcatenationPlugin()
       ],
 
@@ -76,6 +80,15 @@ module.exports = ( env = {} ) => {
             }<%- webpackModuleRules %>
          ]
       }
-   };
+   }, env.browserSpec ? {
+      entry: WebpackJasmineHtmlRunnerPlugin.entry(
+         './' + path.join( widgetsRoot, '**/spec/*.spec.js' )
+      ),
+      output: {
+         path: path.resolve( __dirname, 'spec-output' ),
+         publicPath: '/spec-output/',
+         filename: '[name].bundle.js'
+      }
+   } : {} );
 
 };
