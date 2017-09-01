@@ -136,11 +136,13 @@ module.exports = class extends Generator {
       const { name } = this.vars;
       const filesToCopy = verbatimFileObject( [ 'control.json' ] );
       Object.assign( filesToCopy, {
-         '_.gitignore': '.gitignore',
          'default.theme/css/control.css': `default.theme/css/${name}.css`
       }, this._filesForTechnology() );
 
       if( this.vars.infrastructure ) {
+         Object.assign( filesToCopy, {
+            '_.gitignore': '.gitignore'
+         } );
          Object.assign( filesToCopy, verbatimFileObject( [
             'README.md',
             'package.json'

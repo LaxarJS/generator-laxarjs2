@@ -2,6 +2,9 @@
 
 ## Last Changes
 
+- [#28](https://github.com/LaxarJS/generator-laxarjs2/issues/28): widget/control generators: do not create .gitignore unless asked for a project setup
+    + NEW FEATURE: see ticket for details
+
 
 ## v2.2.3
 

@@ -150,7 +150,6 @@ module.exports = class extends Generator {
       const { name } = this.vars;
       const filesToCopy = verbatimFileObject( [ 'widget.json' ] );
       Object.assign( filesToCopy, {
-         '_.gitignore': '.gitignore',
          'spec/widget.spec.js': `spec/${name}.spec.js`
       }, this._filesForTechnology() );
 
@@ -159,6 +158,9 @@ module.exports = class extends Generator {
       }
 
       if( this.vars.infrastructure ) {
+         Object.assign( filesToCopy, {
+            '_.gitignore': '.gitignore'
+         } );
          Object.assign( filesToCopy, verbatimFileObject( [
             'README.md',
             'package.json'
